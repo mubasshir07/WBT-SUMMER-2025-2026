@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lab Task 05: Form Validation Using DOM</title>
+<style>
+   body {
+       font-family: Arial, sans-serif;
+       background: #f5f5f5;
+       display: flex;
+       justify-content: center;
+       margin-top: 50px;
+   }
+   form {
+       background: white;
+       padding: 30px;
+       border-radius: 8px;
+       box-shadow: 0 0 10px rgba(0,0,0,0.1);
+       width: 300px;
+   }
+   label {
+       display: block;
+       margin-top: 15px;
+       font-weight: bold;
+   }
+   input {
+       width: 100%;
+       padding: 8px;
+       margin-top: 5px;
+       box-sizing: border-box;
+   }
+   button {
+       margin-top: 20px;
+       width: 100%;
+       padding: 10px;
+       background: #4CAF50;
+       color: white;
+       border: none;
+       border-radius: 4px;
+       cursor: pointer;
+   }
+   button:hover {
+       background: #45a049;
+   }
+</style>
+</head>
+<body>
+<form id="myForm">
+<h2>Registration Form</h2>
+<label for="name">Name</label>
+<input type="text" id="name">
+<label for="email">Email</label>
+<input type="text" id="email">
+<button type="submit">Submit</button>
+</form>
+<script>
+   // Attach a function to run when the form is submitted
+   document.getElementById("myForm").onsubmit = function() {
+       // Get the values from the input fields using getElementById
+       var name = document.getElementById("name").value;
+       var email = document.getElementById("email").value;
+       // Check if the name field is empty
+       if (name.trim() === "") {
+           alert("Name field is required!");
+           return false; // stop form from submitting
+       }
+       // Check if the email field is empty
+       if (email.trim() === "") {
+           alert("Email field is required!");
+           return false;
+       }
+       // Simple email format check (must contain @ and .)
+       if (email.indexOf("@") === -1 || email.indexOf(".") === -1) {
+           alert("Please enter a valid email address!");
+           return false;
+       }
+       // If everything is valid
+       alert("Form submitted successfully!");
+       return true; // set to false instead if you just want to test validation
+   };
+</script>
+</body>
+</html>
